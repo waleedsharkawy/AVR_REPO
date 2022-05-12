@@ -7,26 +7,27 @@
 
 #include <avr/io.h>
 #include <util/delay.h>
-
+#include "BITMATH.h"
 int  main(void)
 {
-	DDRA = 0b00001111;   //PA0 out
-	//PORTA =0b00000001;  //set to high
-	//_delay_ms(1000);    //delay
-	//PORTA=0;            // set to low
-	//_delay_ms(1000)    //delay
+	SET_BIT(DDRA,0);   //PA0 -> Output
+	CLR_BIT(DDRA,1);       //PA1 -> Input
+	SET_BIT(PORTA,1);  //Enable Pull Up on PA1
+
 	while(1)
 	{
-		PORTA = 0b00000001;  //PA0 high (5v)
-		for (int i=0;i<4;++i)
+		if (GET_BIT(PINA,1)==0) //if buttom is pressed
 		{
-			_delay_ms(300);
-			PORTA <<= 1;
-
+			_delay_ms(10);
+			if (GET_BIT(PINA,1)==0)
+			{
+				TOG_BIT(PORTA,0);
+			}
 		}
-
-
-
+		else
+		{
+			CLR_BIT(PORTA,0);
+		}
 	}
 
 	return 0;
