@@ -7,24 +7,20 @@
 #include "../LIB/STD_TYPES.h"
 #include <util/delay.h>
 #include "../MCAL/DIO/DIO_int.h"
-#include "../HAL/SSD/SSD_int.h"
-#include <avr/io.h>
+#include "../HAL/LCD/LCD_int.h"
 
 int main (void)
 {
+	HLCD_vInit();
 
-	SSD_vInit();
-for (u8 i=0; i<10; i++)
-{
+	HLCD_vPrintString("waleed sharkawy");
 
-	SSD_vDisplayNum(i);
-	_delay_ms(1000);
-}
 
 	while(1)
 	{
 
 	}
+
 	return 0;
 
 }
