@@ -11,27 +11,25 @@
 
 void HKEYPAD_vInit(void)
 {
-	DIO_vSetPortDir(KPD_PORT,0x0f);
-	DIO_vSetPortVal(KPD_PORT, 0xff);
+	MDIO_vSetPortDir(KPD_PORT,0x0f);
+	MDIO_vSetPortVal(KPD_PORT, 0xff);
 }
 
-u8 HKPD_u8GetPressedKey(void)
+void HKPD_u8GetPressedKey(u8 *L_u8Postion_ptr)
 {
-	u8 pressed_key = 0;
 	for(u8 col=0; col<4; col++)
 	{
-		DIO_vSetPinVal(KPD_PORT, col, DIO_LOW);
+		MDIO_vSetPinVal(KPD_PORT, col, DIO_LOW);
 		for(u8 row=0; row<4; row++)
 		{
-			if(DIO_u8GetPinVal(KPD_PORT, row+4) == 0)
+			if(MDIO_u8GetPinVal(KPD_PORT, row+4) == 0)
 			{
-				pressed_key = row + (col*4) +1  ;
+				*L_u8Postion_ptr = row + (col*4) +1  ;
 			}
-			while(DIO_u8GetPinVal(KPD_PORT, row+4) == 0){}
+			while(MDIO_u8GetPinVal(KPD_PORT, row+4) == 0){}
 			_delay_ms(10);
 		}
 		/* deactivate current column */
-		DIO_vSetPinVal(KPD_PORT, col, DIO_HIGH);
+		MDIO_vSetPinVal(KPD_PORT, col, DIO_HIGH);
 	}
-	return pressed_key;
 }

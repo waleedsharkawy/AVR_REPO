@@ -30,12 +30,12 @@
 
 
 
-void DIO_vSetPinDir(u8 A_u8PortNo,u8 A_u8PinNo,u8 A_u8Dir);
-void DIO_vSetPinVal(u8 A_u8PortNo,u8 A_u8PinNo,u8 A_u8Val);
-u8 DIO_u8GetPinVal(u8 A_u8PortNo,u8 A_u8PinNo);
-void DIO_vSetPortDir(u8 A_u8PortNo, u8 A_u8Dir);
-void DIO_vSetPortVal(u8 A_u8PortNo,u8 A_u8Val);
-u8 DIO_u8GetPortVal(u8 A_u8PortNo);
-
+void MDIO_vSetPinDir(u8 A_u8PortNo,u8 A_u8PinNo,u8 A_u8Dir);
+void MDIO_vSetPinVal(u8 A_u8PortNo,u8 A_u8PinNo,u8 A_u8Val);
+u8 MDIO_u8GetPinVal(u8 A_u8PortNo,u8 A_u8PinNo);
+void MDIO_vSetPortDir(u8 A_u8PortNo, u8 A_u8Dir);
+void MDIO_vSetPortVal(u8 A_u8PortNo,u8 A_u8Val);
+u8 MDIO_u8GetPortVal(u8 A_u8PortNo);
+void MDIO_vTogPinVal(u8 A_u8PortNo, u8 A_u8PinNo);
 
 #endif /* MCAL_DIO_INT_H_ */

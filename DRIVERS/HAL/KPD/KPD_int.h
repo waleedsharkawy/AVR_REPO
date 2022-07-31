@@ -12,7 +12,7 @@
 #include <util/delay.h>
 #define KPD_PORT DIO_PORTC
 
-u8 HKPD_u8GetPressedKey(void);
+void HKPD_u8GetPressedKey(u8 *L_u8Postion_ptr);
 void HKEYPAD_vInit(void);
 
 
